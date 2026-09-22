@@ -1,0 +1,62 @@
+name: Archive scheduled research report
+
+on:
+  issues:
+    types: [opened]
+
+permissions:
+  contents: write
+  issues: write
+
+jobs:
+  archive:
+    if: startsWith(github.event.issue.title, '[archive] ')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Write report
+        id: report
+        env:
+          EVENT_PATH: ${{ github.event_path }}
+        run: |
+          python - <<'PY'
+          import json, os, pathlib, re
+          event = json.loads(pathlib.Path(os.environ["EVENT_PATH"]).read_text())
+          issue = event["issue"]
+          body = issue.get("body") or ""
+          m = re.match(r"<!--\s*path:\s*([^\n]+?)\s*-->\s*\n?", body)
+          if not m:
+              raise SystemExit("Missing archive path marker")
+          rel = m.group(1).strip()
+          if rel.startswith("/") or ".." in pathlib.PurePosixPath(rel).parts or not rel.endswith(".md"):
+              raise SystemExit(f"Unsafe path: {rel}")
+          content = body[m.end():].lstrip("\n")
+          path = pathlib.Path(rel)
+          path.parent.mkdir(parents=True, exist_ok=True)
+          path.write_text(content.rstrip() + "\n", encoding="utf-8")
+          title = issue["title"].removeprefix("[archive] ").strip()
+          pathlib.Path("/tmp/commit_message").write_text(title, encoding="utf-8")
+          pathlib.Path("/tmp/archive_path").write_text(rel, encoding="utf-8")
+          PY
+
+      - name: Commit report
+        run: |
+          git config user.name "Woojin Jung"
+          git config user.email "wojin010629@gmail.com"
+          git add .
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -F /tmp/commit_message
+            git push
+          fi
+
+      - name: Close archive issue
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_URL: ${{ github.event.issue.html_url }}
+        run: gh issue close "$ISSUE_URL" --comment "Archived to `$(cat /tmp/archive_path)`."

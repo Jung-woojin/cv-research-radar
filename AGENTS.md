@@ -1,6 +1,8 @@
 # Research Radar 운영 지침
 
-보고서 작성 전 `docs/research-radar-workflow.md`를 읽고 해당 보고서의 요구사항을 모두 따른다. 보고서는 한국어로 작성한다.
+보고서 작성 전 `docs/automation-system.md`, `config/radar-jobs.json` 및 해당 job의 requirements를 읽고 필수 항목을 모두 따른다. 원문 간 충돌은 automation-system.md의 조정 규칙을 적용한다. 보고서는 한국어로 작성한다. `docs/research-radar-workflow.md`는 기존 세 일간 및 오픈소스 보고서의 상세 기준이다.
+
+전체 본문을 먼저 채팅 commentary로 전달한 뒤 기존 Issue → Actions 아카이브를 수행한다. 파일 링크만으로 채팅 전달을 대체하지 않는다. 정상 GitHub 앱 연결은 `mcp__codex_apps__github_*`이며 다른 연결의 인증 실패를 전체 GitHub 권한 부재로 해석하지 않는다. Issue 생성, 파일 생성, commit, close를 각각 확인한다. CV archive 장애 시 아래 직접 Git 절차를 fallback으로 사용한다. AI Tool Radar는 원문의 Issue write 범위를 유지한다.
 
 ## 저장과 중복 방지
 
@@ -21,8 +23,8 @@
 5. commit 전과 push 전에 `git status`와 `git diff --cached`를 확인한다. 변경이 없으면 commit하지 않는다.
 6. `research: add daily benchmark radar YYYY-MM-DD`, `research: add daily failure watch YYYY-MM-DD`, `research: add daily research questions YYYY-MM-DD`, `research: add weekly open-source radar YYYY-MM-DD` 중 적절한 메시지를 사용한다.
 7. 현재 추적 branch에 commit/push한다. force push하지 않는다. push가 거절되면 사용자 변경을 보존하며 원인을 확인한다. 인증은 시스템 credential helper를 우선하며 token을 출력하거나 저장소에 기록하지 않는다.
-8. 채팅에는 핵심 요약, 전체 보고서 링크, commit hash/파일 경로/branch를 제공한다. 실패 시 로컬 파일 위치와 실패 원인을 알린다. 변경도 실패도 없으면 반복 알림을 보내지 않는다.
+8. 전체 본문을 먼저 전달하고 archive 후 commit hash/파일 경로/branch를 보고한다. 실패 시 로컬 파일 위치와 실패 원인을 알린다. 실행 ledger는 automation-system.md에 따라 기록한다. 변경도 실패도 없는 점검은 반복 알림을 보내지 않는다.
 
 ## 선호 일정
 
-Asia/Seoul: 매일 Benchmark Movement 05:30, Failure / Negative Result Watch 06:30, Research Question Generator 07:30. Weekly CV Open-Source Radar는 매주 월요일 08:00. 오전 9시 전 결과 준비를 목표로 하되 조사 완료 시각을 보장하지 않는다.
+Asia/Seoul 일정 전체는 config/radar-jobs.json을 따른다. 기존 세 일간과 월요일 08:00 Open-Source를 유지하며 Daily Brief, Paper Ideas, Japan Lab, Trend Map, AI Tools와 매일 09:30 Health Check를 포함한다. 오전 9시 전 보고서 준비를 목표로 하되 완료 시각은 보장하지 않는다.

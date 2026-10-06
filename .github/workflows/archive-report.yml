@@ -56,6 +56,7 @@ jobs:
             echo "No changes to commit"
           else
             git commit -F /tmp/commit_message
+            git pull --rebase
             git push
           fi
 
@@ -63,4 +64,6 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           ISSUE_URL: ${{ github.event.issue.html_url }}
-        run: gh issue close "$ISSUE_URL" --comment "Archived to `$(cat /tmp/archive_path)`."
+        run: |
+          archive_path="$(cat /tmp/archive_path)"
+          gh issue close "$ISSUE_URL" --comment "Archived to ${archive_path}."

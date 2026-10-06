@@ -1,0 +1,185 @@
+{
+  "timezone": "Asia/Seoul",
+  "installedOn": "2026-10-06",
+  "expectedFrom": "2026-10-07",
+  "workspace": "C:/Users/ust21/github",
+  "runtime": "C:/Users/ust21/github/radar-runtime",
+  "health": {
+    "id": "research-radar-health-check",
+    "time": "09:30"
+  },
+  "jobs": [
+    {
+      "id": "daily-benchmark-movement",
+      "name": "Daily Benchmark Movement",
+      "repo": "cv-research-radar",
+      "path": "daily/benchmarks",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "time": "05:30",
+      "requirements": [
+        "docs/research-radar-workflow.md"
+      ],
+      "kind": "benchmark",
+      "title": "benchmark: Daily Benchmark Movement"
+    },
+    {
+      "id": "daily-failure-negative-result-watch",
+      "name": "Daily Failure / Negative Result Watch",
+      "repo": "cv-research-radar",
+      "path": "daily/failures",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "time": "06:30",
+      "requirements": [
+        "docs/research-radar-workflow.md"
+      ],
+      "kind": "failures",
+      "title": "failures: Daily Failure Watch"
+    },
+    {
+      "id": "daily-research-question-generator",
+      "name": "Daily Research Question Generator",
+      "repo": "cv-research-radar",
+      "path": "daily/questions",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "time": "07:30",
+      "requirements": [
+        "docs/research-radar-workflow.md",
+        "docs/requirements/trend-map.md"
+      ],
+      "kind": "questions",
+      "title": "questions: Daily Research Questions"
+    },
+    {
+      "id": "weekly-cv-open-source-radar",
+      "name": "Weekly CV Open-Source Radar",
+      "repo": "cv-research-radar",
+      "path": "opensource",
+      "days": [
+        0
+      ],
+      "time": "08:00",
+      "requirements": [
+        "docs/research-radar-workflow.md"
+      ],
+      "kind": "opensource",
+      "title": "opensource: CV open-source radar"
+    },
+    {
+      "id": "cv-vlm-daily-brief",
+      "name": "CV/VLM Daily Brief",
+      "repo": "cv-research-radar",
+      "path": "daily",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "time": "08:30",
+      "requirements": [
+        "docs/requirements/daily-briefing.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "brief",
+      "title": "daily: CV/DL research briefing"
+    },
+    {
+      "id": "cv-paper-idea-radar",
+      "name": "CV Paper Idea Radar",
+      "repo": "cv-research-radar",
+      "path": "ideas",
+      "days": [
+        0,
+        4
+      ],
+      "time": "06:00",
+      "requirements": [
+        "docs/requirements/paper-ideas.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "ideas",
+      "title": "ideas: CV research idea radar"
+    },
+    {
+      "id": "japan-cv-lab-watch",
+      "name": "Japan CV Lab Watch",
+      "repo": "cv-research-radar",
+      "path": "japan-labs",
+      "days": [
+        4
+      ],
+      "time": "08:00",
+      "requirements": [
+        "docs/requirements/japan-labs.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "japan",
+      "title": "japan-labs: Japan CV lab watch"
+    },
+    {
+      "id": "biweekly-cv-trend-map",
+      "name": "Biweekly CV Trend Map",
+      "repo": "cv-research-radar",
+      "path": "trends",
+      "days": [
+        0
+      ],
+      "time": "04:30",
+      "anchor": "2026-10-05",
+      "intervalDays": 14,
+      "requirements": [
+        "docs/requirements/trend-map.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "trends",
+      "title": "trends: biweekly CV trend map"
+    },
+    {
+      "id": "ai-tool-radar",
+      "name": "AI Tool Radar",
+      "repo": "agent-tool-radar",
+      "path": "daily",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "time": "08:10",
+      "requirements": [
+        "docs/requirements/ai-tool-radar.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "tools",
+      "title": "daily: AI tool radar"
+    }
+  ]
+}

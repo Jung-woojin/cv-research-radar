@@ -62,7 +62,8 @@ def audit(config, workspace, automation_root, runtime, today):
             if state in ['placeholder', 'needs_source_review']:
                 historical.append({'path': path.relative_to(repo).as_posix(), 'state': state})
         if dated:
-            first = max(dated) + dt.timedelta(days=1)
+            # A newer report must not hide older gaps inside the archive.
+            first = min(dated)
             end = min(today, start - dt.timedelta(days=1))
             for n in range(max(0, (end - first).days + 1)):
                 day = first + dt.timedelta(days=n)

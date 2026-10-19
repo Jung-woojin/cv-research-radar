@@ -337,3 +337,4 @@ SOTA claim은 반드시 동일 조건 비교인지 확인한다.
 특히 **“자동화가 실행됐다”와 “결과가 실제로 채팅/GitHub에 전달됐다”를 구분**해라.
 
 실행 기록만 있고 보고서나 GitHub 파일이 없으면 실패로 간주하고 가능한 경우 즉시 복구해라.
+> **운영 방식 변경(2026-10-19):** 이 문서의 Issue/Actions 아카이브 지시는 원문 보존용 과거 요구사항이다. 현재 실행에서는 `docs/automation-system.md`를 우선하여 GitHub 파일 API의 `create_file`/`update_file`로 직접 저장하고 Issue를 생성하지 않는다.

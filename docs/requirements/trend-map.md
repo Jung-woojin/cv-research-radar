@@ -512,3 +512,4 @@ Issue archive workflow를 우선 사용한다.
 `Jung-woojin/agent-tool-radar`
 저장소의 현재 상태를 먼저 읽은 다음,
 기존 파일과 workflow를 존중하면서 이후 Research Radar 작업을 이어가라.
+> **운영 방식 변경(2026-10-19):** 이 문서의 Issue/Actions 아카이브 지시는 원문 보존용 과거 요구사항이다. 현재 실행에서는 `docs/automation-system.md`를 우선하여 GitHub 파일 API의 `create_file`/`update_file`로 직접 저장하고 Issue를 생성하지 않는다.

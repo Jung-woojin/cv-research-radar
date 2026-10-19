@@ -2,7 +2,7 @@
 
 보고서 작성 전 `docs/automation-system.md`, `config/radar-jobs.json` 및 해당 job의 requirements를 읽고 필수 항목을 모두 따른다. 원문 간 충돌은 automation-system.md의 조정 규칙을 적용한다. 보고서는 한국어로 작성한다. `docs/research-radar-workflow.md`는 기존 세 일간 및 오픈소스 보고서의 상세 기준이다.
 
-전체 본문을 먼저 채팅 commentary로 전달한 뒤 기존 Issue → Actions 아카이브를 수행한다. 파일 링크만으로 채팅 전달을 대체하지 않는다. 정상 GitHub 앱 연결은 `mcp__codex_apps__github_*`이며 다른 연결의 인증 실패를 전체 GitHub 권한 부재로 해석하지 않는다. Issue 생성, 파일 생성, commit, close를 각각 확인한다. CV archive 장애 시 아래 직접 Git 절차를 fallback으로 사용한다. AI Tool Radar는 원문의 Issue write 범위를 유지한다.
+전체 본문을 먼저 채팅 commentary로 전달한 뒤 연결된 GitHub 앱의 `create_file` 또는 `update_file`로 날짜별 Markdown을 직접 저장한다. 파일 링크만으로 채팅 전달을 대체하지 않는다. 정상 연결은 `mcp__codex_apps__github_*`이며 다른 연결의 인증 실패를 전체 GitHub 권한 부재로 해석하지 않는다. GitHub Issue는 생성하지 않으며 저장 실패를 Issue로 우회하지 않는다. 원격 파일 내용, blob SHA, commit, branch를 실제 확인한다.
 
 ## 저장과 중복 방지
 
@@ -14,7 +14,15 @@
 - 비교 조건이 다르면 `not strictly apples-to-apples`로 표시한다. 미확인 조건은 미확인으로 남긴다.
 - 의미 있는 근거가 부족하면 개수를 억지로 채우지 말고 부족한 이유와 검색 범위를 기록한다. 근거 없는 연구 질문이나 fallback placeholder를 완성 보고서로 commit하지 않는다.
 
-## Git 작업
+## 직접 파일 저장
+
+1. `config/radar-jobs.json`의 저장소와 날짜별 경로를 계산하고 GitHub 앱으로 원격 파일을 조회한다.
+2. 파일이 없으면 `mcp__codex_apps__github_create_file`, 있으면 조회한 현재 SHA와 함께 `mcp__codex_apps__github_update_file`을 사용한다.
+3. 기존 파일과 본문이 같으면 새 commit을 만들지 않는다. 수정할 때는 기존의 유효한 내용과 출처 URL을 보존하고 변경 이유를 남긴다.
+4. Issue 생성과 Issue 기반 fallback은 금지한다. API 저장에 실패하면 로컬 초안과 전체 채팅 보고서를 보존하고 정확한 오류를 기록한다.
+5. 저장 후 원격 본문, blob SHA, commit SHA, branch를 확인한다. 추측으로 성공 처리하지 않는다.
+
+## 로컬 Git 복구 작업
 
 1. 정확한 저장소인지 `git remote -v`, branch, `git status`로 확인한다. 사용자 변경은 덮어쓰거나 임의로 stash하지 않는다. 다른 실행이 진행 중이면 Git 변경 작업이 겹치지 않게 한다.
 2. 깨끗한 작업 트리에서 `git pull --rebase`를 실행한 뒤 파일을 작성한다. 네트워크 실패 시에도 검증 가능한 보고서는 로컬에 보존하고 실패를 알린다.
@@ -23,7 +31,8 @@
 5. commit 전과 push 전에 `git status`와 `git diff --cached`를 확인한다. 변경이 없으면 commit하지 않는다.
 6. `research: add daily benchmark radar YYYY-MM-DD`, `research: add daily failure watch YYYY-MM-DD`, `research: add daily research questions YYYY-MM-DD`, `research: add weekly open-source radar YYYY-MM-DD` 중 적절한 메시지를 사용한다.
 7. 현재 추적 branch에 commit/push한다. force push하지 않는다. push가 거절되면 사용자 변경을 보존하며 원인을 확인한다. 인증은 시스템 credential helper를 우선하며 token을 출력하거나 저장소에 기록하지 않는다.
-8. 전체 본문을 먼저 전달하고 archive 후 commit hash/파일 경로/branch를 보고한다. 실패 시 로컬 파일 위치와 실패 원인을 알린다. 실행 ledger는 automation-system.md에 따라 기록한다. 변경도 실패도 없는 점검은 반복 알림을 보내지 않는다.
+8. 로컬 Git은 GitHub 파일 API 자체가 불가능하고 중앙 운영 문서가 허용하는 경우에만 복구 수단으로 사용한다. Issue는 어떤 경우에도 생성하지 않는다.
+9. 전체 본문을 먼저 전달하고 저장 후 commit hash/파일 경로/branch를 보고한다. 실패 시 로컬 파일 위치와 실패 원인을 알린다. 실행 ledger는 automation-system.md에 따라 기록한다. 변경도 실패도 없는 점검은 반복 알림을 보내지 않는다.
 
 ## 선호 일정
 

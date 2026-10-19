@@ -778,3 +778,4 @@ Useful Tool Adoption
 으로 운영한다.
 
 기존 설정과 저장소를 먼저 점검하고, 가능한 한 지금 존재하는 자동화와 GitHub workflow를 이어받아 관리해라. 불필요하게 새 시스템을 중복 생성하지 마라.
+> **운영 방식 변경(2026-10-19):** 이 문서의 Issue/Actions 아카이브 지시는 원문 보존용 과거 요구사항이다. 현재 실행에서는 `docs/automation-system.md`를 우선하여 GitHub 파일 API의 `create_file`/`update_file`로 직접 저장하고 Issue를 생성하지 않는다.

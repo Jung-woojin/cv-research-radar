@@ -4,6 +4,15 @@
   "expectedFrom": "2026-10-07",
   "workspace": "C:/Users/ust21/github",
   "runtime": "C:/Users/ust21/github/radar-runtime",
+  "archive": {
+    "mode": "github-file-api",
+    "createTool": "mcp__codex_apps__github_create_file",
+    "updateTool": "mcp__codex_apps__github_update_file",
+    "updateRequiresCurrentSha": true,
+    "issueCreation": false,
+    "issueFallback": false,
+    "verifyRemoteContentAndCommit": true
+  },
   "health": {
     "id": "research-radar-health-check",
     "time": "09:30"

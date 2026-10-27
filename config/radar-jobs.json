@@ -88,9 +88,25 @@
       "repo": "cv-research-radar",
       "path": "opensource",
       "days": [
-        0
+        2
       ],
-      "time": "08:00",
+      "time": "04:30",
+      "scheduleHistory": [
+        {
+          "effectiveFrom": "2026-10-07",
+          "days": [
+            0
+          ],
+          "time": "08:00"
+        },
+        {
+          "effectiveFrom": "2026-10-28",
+          "days": [
+            2
+          ],
+          "time": "04:30"
+        }
+      ],
       "requirements": [
         "docs/research-radar-workflow.md"
       ],
@@ -123,10 +139,28 @@
       "repo": "cv-research-radar",
       "path": "ideas",
       "days": [
-        0,
-        4
+        1,
+        3
       ],
       "time": "06:00",
+      "scheduleHistory": [
+        {
+          "effectiveFrom": "2026-10-07",
+          "days": [
+            0,
+            4
+          ],
+          "time": "06:00"
+        },
+        {
+          "effectiveFrom": "2026-10-28",
+          "days": [
+            1,
+            3
+          ],
+          "time": "06:00"
+        }
+      ],
       "requirements": [
         "docs/requirements/paper-ideas.md",
         "docs/requirements/intelligence-agent.md"
@@ -140,9 +174,25 @@
       "repo": "cv-research-radar",
       "path": "japan-labs",
       "days": [
-        4
+        2
       ],
       "time": "08:00",
+      "scheduleHistory": [
+        {
+          "effectiveFrom": "2026-10-07",
+          "days": [
+            4
+          ],
+          "time": "08:00"
+        },
+        {
+          "effectiveFrom": "2026-10-28",
+          "days": [
+            2
+          ],
+          "time": "08:00"
+        }
+      ],
       "requirements": [
         "docs/requirements/japan-labs.md",
         "docs/requirements/intelligence-agent.md"

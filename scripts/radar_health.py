@@ -18,7 +18,11 @@ def scheduler_status(path):
 
 
 def due(job, day):
-    if day.weekday() not in job['days']:
+    days = job['days']
+    for schedule in sorted(job.get('scheduleHistory', []), key=lambda item: item['effectiveFrom']):
+        if day >= dt.date.fromisoformat(schedule['effectiveFrom']):
+            days = schedule['days']
+    if day.weekday() not in days:
         return False
     return not job.get('anchor') or (
         day - dt.date.fromisoformat(job['anchor'])).days % job['intervalDays'] == 0

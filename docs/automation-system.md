@@ -9,6 +9,7 @@
 - Daily Brief는 평일 08:30, Paper Ideas는 화/목 03:00, Japan Lab은 수요일 04:30, AI Tools는 매일 08:10이다.
 - Trend Map은 화요일 04:30에 확인하되 2026-10-06을 기준으로 14일 간격 날짜에만 발행한다. 다음 정규 발행일은 2026-11-03이다. 사이 주에는 조사/발행 없이 종료한다.
 - 기존 Benchmark 05:30, Failure 06:30, Question 07:30을 유지한다. Health Check는 매일 09:30이다. 오전 09:00 전달은 목표이며 조사 지연·동일 채팅 실행 대기로 인해 보장하지 않는다.
+- 일일 최소 10개 의미 있는 보고서를 목표로 Dataset/Annotation 10:30, Reproducibility 12:00, Efficiency/Edge 13:30, Robustness/Shift 15:00, Paper Code/Weight Release 16:30을 매일 실행한다. 빈 파일이나 근거 없는 잔디용 commit은 만들지 않는다.
 - 요일 변경은 `scheduleHistory`에 효력 시작일과 이전 일정을 함께 기록한다. 2026-10-29부터 화·수·목의 주간 작업은 03:00~04:30에 먼저 실행해 05:30 이후 일간 작업과의 경합을 줄인다. Health Check는 당시 유효한 일정으로 과거 누락을 계산하며 현재 요일을 과거에 소급하지 않는다.
 
 ## 조사와 전달
@@ -42,7 +43,7 @@ Git commit author email은 wojin010629@gmail.com을 사용하고 기존 이름�
 
 실행마다 `C:/Users/ust21/github/radar-runtime/runs/<job-id>/<YYYY-MM-DD>.json`에 job_id, report_date, started_at, completed_at, chat_delivered, archive_status, write_method, report_path, file_url, file_sha, commit_sha, branch, error를 기록한다. `write_method`는 `github_create_file`, `github_update_file`, `unchanged` 또는 허용된 `git_fallback`이다. 과거 호환용 `issue_url` 필드는 읽을 수 있지만 새 실행에서는 `null`로 둔다. chat_delivered는 본문을 실제로 보낸 뒤에만 true다. archive_status는 pending/success/failed이며 success는 원격 내용과 commit 확인 뒤에만 쓴다.
 
-매일 09:30 Health Check는 10개 예약의 실제 상태와 ledger, 해당 날짜 원격 파일·SHA·commit, 두 legacy workflow의 trigger를 대조한다. `issues` trigger가 다시 나타나면 장애로 알리되 새 Issue를 만들지 않는다. 원래 돌아야 하는 예약이 의도치 않게 비활성화되었으면 기존 ID를 활성화하고 새로 중복 생성하지 않는다. 사용자가 직접 pause한 예약은 재개하지 않는다.
+매일 09:30 Health Check는 15개 예약의 실제 상태와 ledger, 해당 날짜 원격 파일·SHA·commit, 두 legacy workflow의 trigger를 대조한다. `issues` trigger가 다시 나타나면 장애로 알리되 새 Issue를 만들지 않는다. 원래 돌아야 하는 예약이 의도치 않게 비활성화되었으면 기존 ID를 활성화하고 새로 중복 생성하지 않는다. 사용자가 직접 pause한 예약은 재개하지 않는다.
 
 열린 과거 Issue의 본문은 읽기 전용 복구 근거로만 사용할 수 있다. 새 Issue는 만들지 않고, 검증된 본문은 파일 API로 직접 복구한다. 새 웹 조사로 backfill할 때는 해당 날짜까지 공개된 근거만 쓴다. 당시 시각에 공개됐다는 증거가 없으면 백필 불가로 표시한다. 최신 지식으로 과거 보고서를 꾸미거나 기존 placeholder를 완료로 처리하지 않는다. 신규 작업의 정규 누락 판정은 2026-10-07부터 시작하며, 기존 아카이브의 과거 누락은 별도 history 후보로 다룬다.
 

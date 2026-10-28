@@ -279,6 +279,116 @@
       ],
       "kind": "tools",
       "title": "daily: AI tool radar"
+    },
+    {
+      "id": "daily-dataset-annotation-watch",
+      "name": "Daily Dataset & Annotation Watch",
+      "repo": "cv-research-radar",
+      "path": "daily/datasets",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "time": "10:30",
+      "requirements": [
+        "docs/requirements/extended-daily-radars.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "datasets",
+      "title": "datasets: Daily dataset and annotation watch"
+    },
+    {
+      "id": "daily-reproducibility-watch",
+      "name": "Daily Reproducibility Watch",
+      "repo": "cv-research-radar",
+      "path": "daily/reproducibility",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "time": "12:00",
+      "requirements": [
+        "docs/requirements/extended-daily-radars.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "reproducibility",
+      "title": "reproducibility: Daily reproducibility watch"
+    },
+    {
+      "id": "daily-efficiency-edge-radar",
+      "name": "Daily Efficiency & Edge Radar",
+      "repo": "cv-research-radar",
+      "path": "daily/efficiency",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "time": "13:30",
+      "requirements": [
+        "docs/requirements/extended-daily-radars.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "efficiency",
+      "title": "efficiency: Daily efficiency and edge radar"
+    },
+    {
+      "id": "daily-robustness-shift-watch",
+      "name": "Daily Robustness & Shift Watch",
+      "repo": "cv-research-radar",
+      "path": "daily/robustness",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "time": "15:00",
+      "requirements": [
+        "docs/requirements/extended-daily-radars.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "robustness",
+      "title": "robustness: Daily robustness and shift watch"
+    },
+    {
+      "id": "daily-paper-code-weight-release-watch",
+      "name": "Daily Paper Code & Weight Release Watch",
+      "repo": "cv-research-radar",
+      "path": "daily/releases",
+      "days": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "time": "16:30",
+      "requirements": [
+        "docs/requirements/extended-daily-radars.md",
+        "docs/requirements/intelligence-agent.md"
+      ],
+      "kind": "releases",
+      "title": "releases: Daily paper code and weight watch"
     }
   ]
 }
